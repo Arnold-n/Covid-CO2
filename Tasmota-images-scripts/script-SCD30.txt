@@ -1,0 +1,156 @@
+>D
+; CO2 sensor script for covid-CO2 project
+; (c) Arnold Niessen license CC BY-SA 4.0
+
+; configuration parameters:
+; g1 is CO2 threshold line
+; mx is max CO2 value in graph
+; g1+g2+mx determine LED blinking
+; Bmin,Bmax ADC values for battery display
+; tstep is graph update cycle: 30s/pixel = 1 hour cycle
+; h is stepsize dashed line
+
+g1=600
+g2=800
+mx=1000
+tstep=30
+h=4
+blnk=0
+bmin=640
+bmax=1024
+
+; other vars:
+; a,aa for battery image
+; x,x2 is graph position on graph (0..127)
+; t is time of most recent graph update (in seconds)
+; l is CO2 value
+; ft 1:first-time init; 2: wait for usefule readings
+
+a=0
+aa=0
+x=0
+x2=0
+t=0
+l=0
+ft=1
+y=1
+ftn=0
+
+>T
+; Select sensor: S8 or MHZ19B or SCD30
+l=SCD30#CarbonDioxide
+
+; first time: initialize display
+if ft==1 {
+=>Power on
+=>LedPower1 0
+=>DisplayMode 0
+y=(g1-400)/(mx/40-10)
+if y<0 {
+y=0
+}
+if y>=40 {
+y=40
+}
+y=40-y
+for ftn 0 127 h
+=>DisplayText [C1x%0ftn%y%0y%v1]
+next
+ft=2
+}
+
+; do not print initial 0 or 410 values of sensor (for MHZ)
+if (((l>0) and (l!=410)) or (upsecs>120)) {
+ft=0
+}
+
+; print CO2 ppm value as text
+if ft>0 {
+=>DisplayText [x-2y43C1f2] ---
+=>DisplayText [x66y41C1]ppm
+if (adc(7)>500) {
+; draw battery
+=>DisplayText [C1x120y42h7]
+=>DisplayText [C1x120y63h7]
+=>DisplayText [C1x120y43v20]
+=>DisplayText [C1x127y43v20]
+}
+} else {
+if l<1000 {
+=>DisplayText [x-2y43C1f2] %0l%
+} else {
+=>DisplayText [x-2y43C1f2]%0l%
+}
+=>DisplayText [x66y41C1]ppm
+
+a=adc(7)
+if a>500 {
+a=18*(a-bmin)/(bmax-bmin)
+if (a<1) {
+a=1
+}
+if a>18 {
+a=18
+}
+aa=62-a
+for ftn 122 125 1
+=>DisplayText [C1x%0ftn%y%0aa%v%0a%]
+next
+a=18-a
+if a>0 {
+for ftn 122 125 1
+=>DisplayText [C0x%0ftn%y44v%0a%]
+next
+}
+}
+
+; blink LED if CO2 above thresholds g1/g2
+blnk+=1
+if blnk>2 {
+blnk=0
+}
+if ((l<=g1) or ((l<=g2) and (blnk<2)) or ((l<=mx) and (blnk<1))) {
+=>LedPower1 0
+} else {
+=>LedPower1 1
+}
+
+; update graph every tstep seconds
+if upsecs>t {
+t+=tstep
+
+;draw pixel for CO2 value
+y=(l-400)/(mx/40-10)
+if y<0 {
+y=0
+}
+if y>=40 {
+y=40
+}
+y=40-y
+=>DisplayText [C1x%0x%y%0y%v1]
+; extend threshold line
+if x%h==0 {
+y=(g1-400)/(mx/40-10)
+if (y<0) {
+y=0
+}
+if y>=40 {
+y=40
+}
+y=40-y
+=>DisplayText [C1x%0x%y%0y%v1]
+}
+
+; clear up oldest data point
+x2=x+8
+if x2>127 {
+x2=x2-128
+}
+=>DisplayText [C0x%0x2%y0v41]
+x=x+1
+if x>=128 {
+x=0
+}
+}
+}
