@@ -1,0 +1,3 @@
+These documents, the STL files, and the CO2 sensor scripts are licensed under the CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/legalcode).
+
+The Tasmota firmware images are licensed under the GPLv3 license (see LICENSE.txt in folder with images).
