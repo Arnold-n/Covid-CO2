@@ -1,0 +1,2 @@
+v1.0.0 4 January 2021: initial release
+v1.0.1 6 January 2021: added "SetOption31 0" to resolve LED blinking when not connected to WiFi

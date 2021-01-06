@@ -43,7 +43,8 @@ l=SCD30#CarbonDioxide
 ; first time: initialize display
 if ft==1 {
 =>Power on
-=>LedPower1 0
+=>LedPower 0
+=>SetOption31 1
 =>DisplayMode 0
 y=(g1-400)/(mx/40-10)
 if y<0 {
@@ -110,9 +111,9 @@ if blnk>2 {
 blnk=0
 }
 if ((l<=g1) or ((l<=g2) and (blnk<2)) or ((l<=mx) and (blnk<1))) {
-=>LedPower1 0
+=>LedPower 0
 } else {
-=>LedPower1 1
+=>LedPower 1
 }
 
 ; update graph every tstep seconds

@@ -15,9 +15,10 @@ It measures ca 20x35x55mm without battery, or ca 20x35x84mm with battery.
 
 It is powered over micro-USB.
 
-## Known problems
+## Release history
 
-The LED blinks (also <600ppm) if the device is not connected to WiFi. A solution (new firmware images) will be posted soon.
+4 January 2021: original release
+6 January 2021, v1.0.1: bug fix, modified script to ensure LED remains off even if WiFi is not used or absent
 
 ## Project overview
 
