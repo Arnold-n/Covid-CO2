@@ -17,8 +17,8 @@ It is powered over micro-USB.
 
 ## Release history
 
-4 January 2021: original release
-6 January 2021, v1.0.1: bug fix, modified script to ensure LED remains off even if WiFi is not used or absent
+- 4 January 2021: original release
+- 6 January 2021, v1.0.1: bug fix, modified script to ensure LED remains off even if WiFi is not used or absent
 
 ## Project overview
 
