@@ -33,7 +33,7 @@ There are different STL files to print a 3D-case (one bottom and one top file pe
 - Winsen MH-Z19B version with battery
 - SenseAir S8 LP version without battery
 - SenseAir S8 LP version with battery
-- Sensirion SCD-30 version without battery (will be uploaded later)
-- Sensirion SCD-30 version with battery (will be uploaded later)
+- Sensirion SCD30 version without battery (will be uploaded later)
+- Sensirion SCD30 version with battery (will be uploaded later)
 
 The STL files can be viewed in a 3D viewer on https://www.thingiverse.com/thing:4712931/files
