@@ -26,7 +26,7 @@ There is a detailed illustrated building guide, and pre-built firmware images an
 - Winsen MH-Z19B sensor with automatic baseline calibration off
 - Winsen MH-Z19B sensor with automatic baseline calibration on
 - SenseAir S8 sensor
-- Sensirion SCD-30 sensor
+- Sensirion SCD30 sensor
 
 There are different STL files to print a 3D-case (one bottom and one top file per case) for
 - Winsen MH-Z19B version without battery
