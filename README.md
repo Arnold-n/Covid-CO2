@@ -37,3 +37,14 @@ There are different STL files to print a 3D-case (one bottom and one top file pe
 - Sensirion SCD30 version with battery (will be uploaded later)
 
 The STL files can be viewed in a 3D viewer on https://www.thingiverse.com/thing:4712931/files
+
+## Known issues
+
+- Tasmota script seems to hang (no OLED update, no MQTT update) approximately once/month, unclear whether this is caused by sw or hw
+
+## Wish list
+
+- Horizontal display scrolling of graph using SSD1306 scroll command
+- Data logging (data is not stored while WiFi is unavailable, for example during store visit)
+- LED dimming (for now, can be done via Tasmota console using LedPwmMode \<dimfactor\>)
+- OLED dimming to increase OLED lifetime (Tasmota command doesn't work on my OLED)
