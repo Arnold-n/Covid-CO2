@@ -23,7 +23,7 @@ It is powered over micro-USB.
 ## Project overview
 
 There is a detailed illustrated building guide, and pre-built firmware images and 3D print files are provided. The only necessary software effort is to flash an initial Tasmota image to an ESP8266 board. There are different firmware versions depending on the CO2 sensor:
-- Winsen MH-Z19B sensor with automatic baseline calibration off
+- Winsen MH-Z19B sensor with automatic baseline calibration off (manual calibration needed at least weekly!)
 - Winsen MH-Z19B sensor with automatic baseline calibration on
 - SenseAir S8 sensor
 - Sensirion SCD30 sensor
@@ -40,7 +40,8 @@ The STL files can be viewed in a 3D viewer on https://www.thingiverse.com/thing:
 
 ## Known issues
 
-- Tasmota script seems to hang (no OLED update, no MQTT update) approximately once/month, unclear whether this is caused by sw or hw
+- Tasmota script seems to hang approximately once/month (no OLED update, no MQTT update), unclear whether this is caused by sw or hw
+- Tasmota devices seem to drop i2c device functionality approximately once/year (OLED dark, MQTT/WiFi/sensor continue to work, i2c devices cannot be found), issue can be resolved by reflashing
 
 ## Wish list
 
