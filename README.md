@@ -40,7 +40,9 @@ The STL files can be viewed in a 3D viewer on https://www.thingiverse.com/thing:
 
 ## Known issues
 
-- Tasmota script seems to hang approximately once/month (no OLED update, no MQTT update), unclear whether this is caused by sw or hw
+- For the battery version: the boost circuit does not have over-discharge protection, the design relies on the built-in circuitry of the battery (don't use it without). Some batteries may cycle up and down a few times when empty. When the battery is empty, the boost circuit may use a bit more current than the charge circuit can provide (because of the low battery voltage), so the ESP needs to be powered off until battery has some minimum charge.
+- Tasmota script seems to hang approximately once/month (no OLED update, no MQTT update), unclear whether this is caused by sw or hw; sometimes reflashing is needed
+- Sometimes the ESP board fails and needs to be replaced, perhaps this is an issue with low-quality boards, couldn't find the cause yet.
 - Tasmota devices seem to drop i2c device functionality approximately once/year (OLED dark, MQTT/WiFi/sensor continue to work, i2c devices cannot be found), issue can be resolved by reflashing
 
 ## Wish list
