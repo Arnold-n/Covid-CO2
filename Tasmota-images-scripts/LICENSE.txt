@@ -2,7 +2,8 @@ The CO2 sensor scripts included in these images are licensed under the CC BY-SA 
 
 The Tasmota firmware images are licensed under the GPLv3 license (license text below).
 
-The corresponding modified Tasmota source code and configuration files for these images can be found in https://github.com/arnold-n/Tasmota/tree/CO2.
+The corresponding modified Tasmota source code and configuration files for these images can be found in
+https://github.com/Arnold-n/Tasmota/tree/a21fcfaea18d0ed0e5b25e4e9a639040246fcd82
 
 A few minor changes were made to the Tasmota source code as indicated at the start of the README.md
 
